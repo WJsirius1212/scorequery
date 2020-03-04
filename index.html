@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--css-->
+    <link rel="stylesheet" href="navigator.css">
+    <link rel="stylesheet" href="#">
+
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-size: 5vw;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    
+    .footer {
+        display: flex;
+        width: 100vw;
+        height: 10%;
+        list-style: none;
+        background-color: lavender;
+        box-shadow: 0 -1vw 1vw rgba(114, 96, 96, 0.2);
+        position: fixed;
+        justify-content: space-evenly;
+        bottom: 0vw;
+    }
+    
+    .button {
+        background-color: lavender;
+        color: white;
+        border: none;
+        text-decoration: none;
+        display: inline-block;
+        width: 20vw;
+        text-align: center;
+        outline: none;
+    }
+    
+    .button:active {
+        background-color: lavender;
+        color: lavenderblush;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    .shown {
+        display: block;
+    }
+    
+    .indext1 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        flex-direction: row
+    }
+    
+    .subject {
+        border: lightgray solid 3px;
+        box-shadow: 0 0 3vw rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        width: 80vw;
+        height: 30vh;
+        margin: 10vw;
+    }
+    
+    .left-nav {
+        background-color: mistyrose;
+        position: fixed;
+        left: 0;
+        overflow: auto;
+        width: 21%;
+        height: 89.7%;
+        box-shadow: 1vw 0 1vw rgba(114, 96, 96, 0.2);
+    }
+    
+    a {
+        text-decoration: none;
+        color: gray;
+    }
+    
+    .teachername {
+        list-style: none;
+        overflow: hidden;
+        text-align: center;
+        color: lightcoral;
+        padding-top: 3vh;
+        padding-bottom: 3vh;
+    }
+    
+    .teachername:active {
+        background-color: floralwhite;
+    }
+    
+    .teacher {
+        color: lightcoral;
+    }
+    
+    .right-main {
+        position: fixed;
+        right: 0;
+        width: 78%;
+        height: 89.5%;
+        overflow: auto;
+    }
+    
+    .subject-teacher {
+        width: 65vw;
+        height: 25vh;
+        margin: 7vw;
+        border: rgb(199, 199, 199) solid 3px;
+        box-shadow: 0 0 3vw rgba(0, 0, 0, 0.2);
+        border-radius: 2vw;
+    }
+    
+    .subject-teacher:active {
+        background-color: rgba(231, 231, 231, 0.678);
+    }
+    
+    .subject-name {
+        display: block;
+        font-size: 5vw;
+        margin: 2vw;
+        text-align: center;
+    }
+    
+    #user {
+        font-size: 15vw;
+        text-align: center;
+        margin-top: 10vw;
+    }
+    
+    #weighted-average {
+        font-size: 15vw;
+        border: lightgray solid 3px;
+        box-shadow: 4px 4px 10px rgba(102, 63, 63, 0.2);
+        text-align: center;
+        border-radius: 10px;
+        width: 80vw;
+        height: 20vh;
+        margin-top: 10vw;
+    }
+</style>
+<script>
+    window.onload = function() {
+        //筛选老师
+        var teacher = document.getElementsByClassName("teacher");
+        for (var i = 0; i < teacher.length; i++) {
+            teacher[i].key = i;
+            //alert(i);
+        }
+        for (var i = 0; i < teacher.length; i++) {
+            teacher[i].onclick = function() {
+                alert(this.key);
+                //留着 用老师值筛选成绩
+            };
+        }
+
+        //页面改变
+        var button = document.getElementsByClassName("button");
+        for (var i = 0; i < button.length; i++) {
+            button[i].key = i;
+        }
+        for (var i = 0; i < button.length; i++) {
+            //alert(i);
+            button[i].onclick = function change_page() {
+                var index = document.getElementsByClassName("index");
+
+                for (var i = 0; i < index.length; i++) {
+                    index[i].firstElementChild.setAttribute("class", "hidden");
+                }
+                index[this.key].firstElementChild.setAttribute("class", "shown");
+            }
+        }
+    }
+</script>
+
+
+
+<body>
+    <!--navigator-->
+    <nav class="footer">
+        <button class="button">主页</button>
+        <button class="button">教师</button>
+        <button class="button">我的</button>
+    </nav>
+
+
+    <!--1-->
+    <div class="index">
+        <div class="hidden">
+            <div class="index1">
+                <div class="subject">
+                    <p class="subject-name">语文</p>
+                </div>
+                <div class="subject">
+                    <p class="subject-name">语文</p>
+                </div>
+                <div class="subject">
+                    <p class="subject-name">语文</p>
+                </div>
+                <div class="subject">
+                    <p class="subject-name">语文</p>
+                </div>
+                <div class="subject">
+                    <p class="subject-name">语文</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--2-->
+    <div class="index">
+        <div class="shown">
+            <div>
+                <nav>
+                    <ul class="left-nav">
+                        <li class="teachername"><a class="teacher">朱一龙</a></li>
+                        <li class="teachername"><a class="teacher">周杰伦</a></li>
+                        <li class="teachername"><a class="teacher">肖战</a></li>
+                        <li class="teachername"><a class="teacher">白宇</a></li>
+                        <li class="teachername"><a class="teacher">王一博</a></li>
+                        <li class="teachername"><a class="teacher">黄子韬</a></li>
+                        <li class="teachername"><a class="teacher">李易峰</a></li>
+                        <li class="teachername"><a class="teacher">胡歌</a></li>
+                        <li class="teachername"><a class="teacher">张艺兴</a></li>
+                        <li class="teachername"><a class="teacher">郭德纲</a></li>
+                        <li class="teachername"><a class="teacher">成龙</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="right-main">
+
+                <a href="class.html" class="link-to">
+                    <div class="subject-teacher">
+                        <p class="subject-name">语文</p>
+                    </div>
+                </a>
+                <a href="class.html" class="link-to">
+                    <div class="subject-teacher">
+                        <p class="subject-name">语文</p>
+                    </div>
+                </a>
+                <a href="class.html" class="link-to">
+                    <div class="subject-teacher">
+                        <p class="subject-name">语文</p>
+                    </div>
+                </a>
+                <a href="class.html" class="link-to">
+                    <div class="subject-teacher">
+                        <p class="subject-name">语文</p>
+                    </div>
+                </a>
+                <a href="class.html" class="link-to">
+                    <div class="subject-teacher">
+                        <p class="subject-name">语文</p>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--3-->
+    <div class="index">
+        <div class="hidden">
+            <div id="user">
+                WJ
+            </div>
+            <div style="display:flex;flex-wrap: wrap;justify-content: center;">
+                <div id="weighted-average" style="text-align: center;padding-top: 5vw;">
+                    <p style="text-align: center;color: firebrick;">加权</p>86
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+</body>
+
+
+
+</html>
