@@ -1,59 +1,18 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <!--css-->
-    <link rel="stylesheet" href="#">
-</head>
-<style>
-    * {
-        font-size: 5vh;
-        color: #4298b9;
-    }
-    
-    body {
-        background-color: #4298b9;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    input {
-        box-sizing: border-box;
-        width: 70vw;
-        padding: 1vw;
-        box-shadow: none;
-        background-color: white;
-        margin-top: 3vw;
-        border-radius: 2vw;
-        border: #4298b9;
-        margin-left: 15vw;
-    }
-    
-    label {
-        display: inline;
-        color: white;
-        font-size: 3vh;
-    }
-    
-    .inputs {
-        width: 60vw;
-    }
-    
-    form {
-        margin-top: 40%;
-    }
-</style>
+    <link rel="stylesheet" href="../static/css/loginsign.css" />
+  </head>
 
-<body>
+  <body>
     <form method="POST">
-        <input type="text" name="username" value="username">
-        <input type="password" name="passwd" value="password"> {% for s in sl:%}
-        <div style="margin-left: 5vw;">
-            <label>{{subject[s]}}({{Englishname[s]}})</label><input type="text" name="{{Englishname[s]}}" class="inputs"></div> {% endfor %}
-        <input type="submit" value="Submit">
+      <input type="text" name="username" value="username" style="margin-left: 15vw" />
+      <input type="password" name="passwd" value="password" style="margin-left: 15vw" /> {% for s in sl:%}
+      <div style="margin-left: 5vw;"><label style="margin-left: 3vw;width: 10vw;">{{subject[s]}}</label><input type="text" name="{{Englishname[s]}}" class="inputs" value="{{Englishname[s]}}" style="width: 60vw;margin-left: 5vw;" /></div>
+      {% endfor %}
+      <input type="submit" value="SUBMIT" class="submit" />
     </form>
-
-</body>
-
+  </body>
 </html>

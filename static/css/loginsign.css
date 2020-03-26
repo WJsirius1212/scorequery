@@ -1,0 +1,46 @@
+* {
+  font-size: 5vh;
+  color: #24baff;
+}
+
+body {
+  background-color: #9de3ff;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  box-sizing: border-box;
+  width: 70vw;
+  padding: 2vw;
+  padding-left: 4vw;
+  box-shadow: none;
+  background-color: white;
+  margin-top: 3vh;
+  border-radius: 10vw;
+  border: #4298b9;
+  box-shadow: 0 0 2vw #004a68;
+  margin-left: 15vw;
+}
+
+.submit {
+  box-shadow: none;
+  background-color: #9de3ff;
+  color: white;
+  text-shadow: 0 0 2vw #004a68;
+  font-size: 7vh;
+}
+
+.submit:active {
+  text-shadow: none;
+}
+
+form {
+  margin-top: 40%;
+}
+
+label {
+  display: inline;
+  color: white;
+  font-size: 3vh;
+}

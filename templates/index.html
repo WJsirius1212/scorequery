@@ -1,355 +1,98 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <!--css-->
-    <link rel="stylesheet" href="#">
-</head>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        font-size: 5vw;
-        outline: none;
-        text-align: center;
-    }
-    
-    .footer {
-        display: flex;
-        width: 100vw;
-        height: 10%;
-        list-style: none;
-        background-color: #4198b9;
-        box-shadow: 0 -1vw 3vw #1e56708f;
-        position: fixed;
-        justify-content: space-evenly;
-        bottom: 0vw;
-    }
-    
-    .button {
-        background-color: #4198b9;
-        color: white;
-        border: none;
-        text-decoration: none;
-        display: inline-block;
-        width: 20vw;
-        text-align: center;
-        outline: none;
-    }
-    
-    .button:active {
-        background-color: #4198b9;
-        color: #91cfc9;
-    }
-    
-    .hidden {
-        display: none;
-    }
-    
-    .shown {
-        display: block;
-    }
-    
-    body {
-        background-color: #f3fafa;
-    }
-    
-    .indext1 {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        flex-direction: row
-    }
-    
-    .input {
-        background-color: #1e5670;
-        box-shadow: 0 0 4vw #1e567079;
-        width: 100%;
-        padding: 4vw;
-        height: 7%;
-        position: fixed;
-        top: 0;
-        display: flex;
-    }
-    
-    input[type="text"] {
-        box-sizing: border-box;
-        font-size: 7vw;
-        width: 70vw;
-        padding: 1vw;
-        box-shadow: none;
-        background-color: white;
-        margin-top: 4vw;
-        border-radius: 2vw;
-        border: #1e5670;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    }
-    
-    .searchbutton {
-        margin-left: 75vw;
-        border: #656666;
-        background-color: #1e5670;
-        color: white;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    }
-    
-    .searchbutton:active {
-        color: #91cfc9
-    }
-    
-    .subject {
-        border: #cde8f3 solid 3px;
-        box-shadow: 0 0 2vw #1e567079;
-        border-radius: 2vh;
-        width: 80vw;
-        margin: 10vw;
-        padding-bottom: 5vw;
-        background-color: white;
-    }
-    
-    .left-nav {
-        background-color: #1e5670;
-        position: fixed;
-        left: 0;
-        overflow: auto;
-        width: 21%;
-        height: 89.91%;
-        box-shadow: 1vw 0 3vw #1e567054;
-    }
-    
-    a {
-        text-decoration: none;
-        color: #1e5670;
-    }
-    
-    .teacher {
-        color: #f3fafa;
-    }
-    
-    .teachername {
-        list-style: none;
-        overflow: hidden;
-        text-align: center;
-        padding-top: 3vh;
-        padding-bottom: 3vh;
-    }
-    
-    .teachername:active {
-        background-color: #cde8f3;
-    }
-    
-    .right-main {
-        position: fixed;
-        right: 0;
-        width: 78%;
-        height: 89.5%;
-        overflow: auto;
-    }
-    
-    .subject-teacher {
-        width: 65vw;
-        margin: 7vw;
-        border: #cde8f3 solid 3px;
-        box-shadow: 0 0 3vw #1e567079;
-        border-radius: 2vw;
-        padding-bottom: 3vw;
-        background-color: white;
-    }
-    
-    .subject-teacher:active {
-        background-color: #cde8f3;
-    }
-    
-    .subject-name {
-        display: block;
-        font-size: 5vw;
-        margin: 2vw;
-        text-align: center;
-    }
-    
-    #user {
-        font-size: 15vw;
-        text-align: center;
-        padding-top: 10vw;
-        color: #1e5670;
-    }
-    
-    #weighted-average {
-        font-size: 15vw;
-        border: #cde8f3 solid 3px;
-        box-shadow: 0 0 4vw #1e567079;
-        text-align: center;
-        border-radius: 2vh;
-        width: 80vw;
-        margin-top: 10vw;
-        background-color: white;
-    }
-</style>
-<script type="text/javascript">
-    window.onload = function() {
-        //筛选老师
-        //测试是否进入onload alert("nmsl");
-        var teacher = document.getElementsByClassName("teacher");
-        for (var i = 0; i < teacher.length; i++) {
-            teacher[i].key = i;
-            //alert(i);
-        }
-        for (var i = 0; i < teacher.length; i++) {
-            teacher[i].onclick = function() {
-                /*确认是否正确传值
-                alert(this.key);*/
-                //用老师值筛选成绩
-                var subject_teacher = document.getElementsByClassName("subject-teacher");
-                for (var n = 0; n < subject_teacher.length; n++) {
+    <link rel="stylesheet" href="../static/css/index.css" />
+  </head>
 
-                    subject_teacher[n].parentNode.setAttribute("class", "shown");
-                    /*测试是否正确传值
-                    alert(this.key+'+'+subject_teacher[n].getAttribute("teachernum"));*/
-                    if (subject_teacher[n].getAttribute("teachernum") != this.key) {
-                        subject_teacher[n].parentNode.setAttribute("class", "hidden");
-                    }
-                }
-
-
-            };
-        }
-
-        //页面改变
-        var button = document.getElementsByClassName("button");
-        for (var i = 0; i < button.length; i++) {
-            button[i].key = i;
-        }
-        for (var i = 0; i < button.length; i++) {
-            //alert(i);
-            button[i].onclick = function change_page() {
-                var index = document.getElementsByClassName("index");
-
-                for (var i = 0; i < index.length; i++) {
-                    index[i].firstElementChild.setAttribute("class", "hidden");
-                }
-                index[this.key].firstElementChild.setAttribute("class", "shown");
-            }
-        }
-
-        document.getElementById("searchsubject").onclick = function() {
-            var search = document.getElementById("search_subject").value;
-            var subject = document.getElementsByClassName("subject");
-            for (var m = 0; m < subject.length; m++) {
-
-                subject[m].parentNode.parentNode.setAttribute("class", "shown");
-                /*测试是否正确传值
-                alert(search);*/
-                if (subject[m].getAttribute("subjectname") != search) {
-                    subject[m].parentNode.parentNode.setAttribute("class", "hidden");
-                }
-            }
-        }
-
-
-
-    }
-</script>
-
-<body>
-    <!--navigator-->
+  <body>
+    <!--footer-->
     <nav class="footer">
-        <button class="button" style="background-image:url(/static/se.svg);background-repeat: no-repeat;background-size: 40% 40%;background-position: center;"></button>
-        <button class="button" style="background-image:url(/static/te.svg);background-repeat: no-repeat;background-size: 40% 40%;background-position: center;"></button>
-        <button class="button" style="background-image:url(/static/sc.svg);background-repeat: no-repeat;background-size: 40% 40%;background-position: center;"></button>
+      <button class="button" style="background-image:url(../static/pic/se.svg);background-repeat: no-repeat;background-size: 40% 40%;background-position: center;"></button>
+      <button class="button" style="background-image:url(../static/pic/te.svg);background-repeat: no-repeat;background-size: 40% 40%;background-position: center;"></button>
+      <button class="button" style="background-image:url(../static/pic/sc.svg);background-repeat: no-repeat;background-size: 40% 40%;background-position: center;"></button>
     </nav>
-
 
     <!--1-->
     <div class="index">
-        <div class="hidden">
-            <div class="index1">
-
-                <div class="input">
-                    <!--表单？-->
-                    <input type="text" name="subject" class="input" id="search_subject" value="Subject?" />
-                    <input type="button" class="searchbutton" value="Search" id="searchsubject" />
-
-                </div>
-                <div style="height:10vh;width: 100vw;color: #f3fafa;">彩蛋：我是用来占位置的Σ(°Д°;这都被发现了</div>
-                {% for s in subject_length%}
-                <div class="shown">
-                    <a href="class.html/{{username}}/{{Englishname[s]}}" class="link-to">
-                        <div class="subject" subjectname={{s}}>
-                            <p class="subject-name">{{subject[s]}}</p>
-                            <p style="font-size: 10vw;">
-                                {{yourscore[s]}}
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                {% endfor %}
-
-            </div>
+      <div class="shown">
+        <div class="index1">
+          <div class="input">
+            <!--表单？-->
+            <input type="text" name="subject" class="input" id="search_subject" value="Subject?" />
+            <input type="button" class="searchbutton" value="Search" id="searchsubject" />
+          </div>
+          <div style="height:10vh;width: 100vw;color: #f3fafa;">
+            彩蛋：我是用来占位置的Σ(°Д°;这都被发现了
+          </div>
+          {% for s in subject_length%}
+          <div class="shown">
+            <a href="class.html/{{username}}/{{Englishname[s]}}" class="link-to">
+              <div class="subject" subjectname="{{subject[s]}}">
+                <p class="subject-name">{{subject[s]}}</p>
+                <p style="font-size: 10vw;">
+                  {{yourscore[s]}}
+                </p>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
         </div>
+      </div>
     </div>
-
 
     <!--2-->
     <div class="index">
-        <div class="shown">
-            <div>
-                <nav>
-                    <ul class="left-nav">
-                        {% for t in teacher %}
-                        <li class="teachername"><a class="teacher">{{t}}</a></li>
-                        {%endfor%}
-                    </ul>
-                </nav>
-            </div>
-            <div class="right-main">
-                {% for s in subject_length%}
-                <div class="shown">
-                    <a href="class.html/{{username}}/{{Englishname[s]}}" class="link-to">
-                        <div class="subject-teacher" teachernum={{subjects[s]}}>
-                            <p class="subject-name">{{subject[s]}}</p>
-                            <p style="font-size: 10vw;">
-                                {{yourscore[s]}}
-                            </p>
-                        </div>
-                    </a>
-                </div>
-
-                {% endfor %}
-
-
-            </div>
-
+      <div class="hidden">
+        <div>
+          <nav>
+            <ul class="left-nav">
+              {% for t in teacher %}
+              <li class="teachername"><a class="teacher">{{t}}</a></li>
+              {%endfor%}
+            </ul>
+          </nav>
         </div>
-    </div>
+        <div class="right-main">
+          {% for s in subject_length%}
+          <div class="shown">
+            <a href="/class.html/{{username}}/{{Englishname[s]}}" class="link-to">
+              <div class="subject-teacher" teachernum="{{subjects[s]}}">
+                <p class="subject-name">{{subject[s]}}</p>
+                <p style="font-size: 10vw;">
+                  {{yourscore[s]}}
+                </p>
+              </div>
+            </a>
+          </div>
 
+          {% endfor %}
+        </div>
+      </div>
+    </div>
 
     <!--3-->
     <div class="index">
-        <div class="hidden">
-            <div id="user">
-                {{username}}
-            </div>
-            <div style="display:flex;flex-wrap: wrap;justify-content: center;">
-                <div id="weighted-average" style="text-align: center;padding: 5vw;">
-                    <p style="text-align: center;color:#4198b9;">你的成绩</p>
-                    {% for s in subject_length%}
-                    <p style="text-align:center;font-size:7vw;color: #1e5670;">{{subject[s]}}:{{yourscore[s]}}</p>
-                    {% endfor %}
-                    <p style="text-align: center;color:#4198b9;">平均:{{yaver}}</p>
-
-                </div>
-
-            </div>
-
-
+      <div class="hidden">
+        <div id="user">
+          {{username}}
         </div>
+        <div style="display:flex;flex-wrap: wrap;justify-content: center;">
+          <div id="weighted-average" style="text-align: center;padding: 5vw;">
+            <p style="text-align: center;color:#4198b9;">你的成绩</p>
+            {% for s in subject_length%}
+            <p style="text-align:center;font-size:7vw;color: #1e5670;">
+              {{subject[s]}}:{{yourscore[s]}}
+            </p>
+            {% endfor %}
+            <p style="text-align: center;color:#4198b9;">平均:{{yaver}}</p>
+          </div>
+        </div>
+      </div>
     </div>
 
-
-
-</body>
-
-
-
+    <!--javascript-->
+    <script defer src="../static/js/index7.js"></script>
+  </body>
 </html>

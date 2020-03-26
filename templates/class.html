@@ -1,87 +1,38 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <!--css-->
-    <link rel="stylesheet">
-</head>
-<style type=>
-    * { font-size: 5vw;color: #1e5670; } span { font-size: 6vw; display: inline-block; text-align: center; color: gray; padding: 1px; background-color: rgb(255, 255, 255); border-radius: 2vw; box-shadow: 0 0 2vw rgb(204, 201, 201); width: 20vw; height: 9vw;
-    } span:active { background-color: rgb(204, 201, 201); } body { background-color: #f3fafa; display: flex; flex-direction: column; flex-wrap: wrap; } .subject { text-indent: 10vw; } .detail { text-align: center; border-radius: 20px; background-color:
-    white; box-shadow: 0 0 3vw rgb(175, 172, 172); text-indent: 5vw; width: 89vw; margin: 5vw 3vw 5vw 5vw; } .thumb { display: inline-block; width: 30vw; height: 30vw; border: none; border-radius: 5vw; background-color: white; box-shadow: 0 0 3vw rgb(204,
-    201, 201); margin-top: 5vw; outline: none; } .thumb:active { background-color: rgba(189, 186, 186, 0.322); } .thumbup { display: inline-block; width: 30vw; height: 30vw; border: none; border-radius: 5vw; background-color: #1e5670; color: white; box-shadow:
-    0 0 3vw rgb(204, 201, 201); margin-top: 5vw; outline: none; }
-</style>
-<script type="text/javascript">
-    function back() {
-        window.history.go(-1);
-    }
-    window.onload = function() {
-        var thumbup = document.getElementsByTagName("button");
-        for (var i = 0; i < thumbup.length; i++) {
-            thumbup[i].key = 0;
-        }
-        //点赞是0！
-        var thumbupsum = document.getElementById("num").innerHTML;
-        for (var i = 0; i < thumbup.length; i++) {
-            thumbup[i].onclick = function() {
-                if (this.id == "up") {
-                    var down = document.getElementById("down");
-                    down.setAttribute("class", "thumb");
-                    if (thumbupsum == document.getElementById("num").innerHTML) {
-                        document.getElementById("num").innerHTML++;
-                    }
+    <link rel="stylesheet" href="../../static/css/class.css" />
+    <!--特别诡异的是如果单独打开class它当前目录是在与static同级的template里，但是flask运行后从index进入class则目录又变深了一级，只能再返回一级再进static找文件-->
+  </head>
 
-
-                } else {
-                    var up = document.getElementById("up");
-                    up.setAttribute("class", "thumb");
-                    if (thumbupsum == document.getElementById("num").innerHTML) {
-                        document.getElementById("num").innerHTML--;
-                    }
-
-                }
-                if (this.key) {
-                    this.setAttribute("class", "thumb");
-                    this.key = 0;
-                    document.getElementById("num").innerHTML = thumbupsum;
-                } else {
-                    this.setAttribute("class", "thumbup");
-                    this.key = 1;
-
-                }
-
-            }
-        }
-    }
-</script>
-
-<body>
+  <body>
     <div>
-        <span onclick="back()"><<<</span>
+      <span onclick="back()"><<<</span>
     </div>
     <div class="subject">
-        <h3 style="font-size: 7vw;">课程名称:{{c_sub}}({{subject}})</h3>
-        <p>任课老师:{{teachername}}</p>
-        <p>平均分:{{aver}}</p>
-        <p>参考人数:{{usernum}}</p>
-
+      <h3 style="font-size: 7vw;">课程名称:{{c_sub}}({{subject}})</h3>
+      <p>任课老师:{{teachername}}</p>
+      <p>平均分:{{aver}}</p>
+      <p>参考人数:{{usernum}}</p>
     </div>
-    <div class=detail>
-        <p style="text-align: left;"> 你的分数 </p>
-        <p style="font-size:15vw">{{yscore}}</p>
+    <div class="detail">
+      <p style="text-align: left;">你的分数</p>
+      <p style="font-size:15vw">{{yscore}}</p>
     </div>
 
     <div style="display: inline-flex;justify-content: space-evenly">
-        <button class="thumb" id="up">赞</button>
-        <button class="thumb" id="down">踩</button>
-
+      <button class="thumb" id="up">赞</button>
+      <button class="thumb" id="down">踩</button>
     </div>
     <div style="text-align: center;">
-        <p>点赞人数</p>
-        <p id="num">{{thumbnum}}</p>
+      <p>点赞人数</p>
+      <p id="num">{{thumbnum}}</p>
     </div>
-</body>
 
+    <!--javascript-->
+    <script src="../../static/js/class.js"></script>
+    <!--../../的理由同css-->
+  </body>
 </html>
