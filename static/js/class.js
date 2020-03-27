@@ -13,7 +13,7 @@ window.onload = function() {
   //获取点赞总数
   for (let i = 0; i < thumbup.length; i++) {
     thumbup[i].onclick = function() {
-      if (this.id == "up") {
+      if (this.id === "up") {
         //点赞后格式化踩为为选中状态
         let down = document.getElementById("down");
         down.setAttribute("class", "thumb");
